@@ -1,0 +1,37 @@
+<h2>Here is the Article Page</h2>
+<% if @articles.empty? %>
+<% else %>
+<table>
+	<thead>
+		<tr>
+		<th>Sl no</th>
+		<th>title</th>
+		<th>body</th>
+		<th>published</th>
+		<th>published_date</th>
+		<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @articles.each_with_index do |article, index| %>
+	<tr> 
+		<td><%= index + 1 %></td>
+		<td><%= article.title %></td>
+		<td><%= article.body %></td>
+		<td><%= article.published %></td>
+		<td><%= article.published_date %></td>
+		<td><%= link_to "Show Details", article_path(article) %></td>
+	</tr>
+	<% end %>
+</tbody>
+</table>
+<% end %>
+<%= link_to "Add Your Article", new_article_path %>
+
+
+
+
+
+
+
+

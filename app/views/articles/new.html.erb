@@ -1,0 +1,32 @@
+<h3>Add the Articles</h3>
+<%= form_for @article do|f| %>
+<%  if @article.errors.any?%>
+	<h3> errors find</h3>
+	<ul>
+		<%= @article.errors.full_messages.each do |msg|%>
+		<li> <%= msg %></li>
+		
+		<% end %>
+	</ul>
+	<% end %>
+
+<%= f.label :title, for: "title" %><br/>
+<%= f.text_field :title, autofocus: true, id:"title" %><br/>
+
+<%= f.label :body %><br/>
+<%= f.text_area :body, id: "body" %><br/>
+
+<%= f.label :published %><br/>
+<%= f.check_box :published %><br/>
+
+<%= f.label :published_date %><br/>
+<%= f.date_select :published_date, order: [:day, :month, :year] %><br/>
+
+<%= f.label :select_categories %>
+<%= f.collection_check_boxes :category_ids, Category.all, :id, :name %> </br>
+
+<%= f.submit "Submit"%>
+<% end %>
+
+
+

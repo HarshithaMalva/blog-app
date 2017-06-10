@@ -1,0 +1,31 @@
+<h2><%= @article.title  %></h2>
+
+<p> title: <%= @article.title %></p>
+<p> body: <%= @article.body %></p>
+<p> published: <%= @article.published %></p>
+<p> publishes_date: <%= @article.published_date %></p>
+<h3>Add your Comments</h3>
+
+<%= form_for Comment.new do |f|%>
+<%= f.hidden_field :article_id, value: @article.id %>
+<%= f.label :title %><br/>
+<%= f.text_field :title %><br/>
+
+<%= f.label :body %>
+<%= f.text_area :body %><br/>
+
+<%= f.submit "Add Comment" %>
+<% end %>
+<%  if user_signed_in? && current_user.is_admin %>
+<%= link_to "Edit", edit_article_path(@article) %> 
+<%= link_to "destroy", article_path(@article), method: :delete, data:{confirm: "Are you sure"} %>
+<%end %>
+
+<P>
+	<strong> Categories:</strong>
+	<% @article.categories.each do|category| %>
+	<%= link_to category.name, category%>
+	<% end %>
+
+</P>
+
