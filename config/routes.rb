@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :advertisers
+
   resources :authors
 
   resources :categories
