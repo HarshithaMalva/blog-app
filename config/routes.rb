@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :subscribers
+
   resources :advertisers
 
   resources :authors
